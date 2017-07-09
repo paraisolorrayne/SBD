@@ -35,7 +35,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="474" max="32767" attributes="0"/>
+          <EmptySpace min="0" pref="478" max="32767" attributes="0"/>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -52,14 +52,22 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="257" max="-2" attributes="0"/>
+                          <Component id="lbTitlePage" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="321" max="-2" attributes="0"/>
+                          <Component id="ckbCorrente" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="lbDtNasc" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txtDataNasc" pref="101" max="32767" attributes="0"/>
-                      </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="lbNome" alignment="0" max="32767" attributes="0"/>
@@ -73,9 +81,22 @@
                               <Component id="txtNome" alignment="1" max="32767" attributes="0"/>
                           </Group>
                       </Group>
+                      <Component id="btnCadastrar" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                          <Component id="btnCadastrar" min="-2" pref="200" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="lbTipoConta" min="-2" pref="146" max="-2" attributes="0"/>
+                              <Component id="lbDtNasc" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="txtDataNasc" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                                  <Component id="ckbPoupanca" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
                   </Group>
                   <EmptySpace pref="179" max="32767" attributes="0"/>
@@ -95,14 +116,12 @@
                               <Component id="txtEndereco" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
-                      <Component id="btnCancel" min="-2" pref="200" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
+                          <Component id="btnCancel" min="-2" pref="200" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-              </Group>
-              <Group type="102" attributes="0">
-                  <EmptySpace min="-2" pref="257" max="-2" attributes="0"/>
-                  <Component id="lbTitlePage" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="265" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -139,12 +158,18 @@
                       <Component id="lbGerador" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtGerador" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                  <EmptySpace pref="57" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btnCadastrar" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnCancel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbTipoConta" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="ckbPoupanca" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="ckbCorrente" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="102" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="btnCancel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnCadastrar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -242,6 +267,21 @@
                 </TitledBorder>
               </Border>
             </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbTipoConta">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Tipo de Conta:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="ckbPoupanca">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Poupan&#xe7;a"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="ckbCorrente">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Corrente"/>
           </Properties>
         </Component>
       </SubComponents>
