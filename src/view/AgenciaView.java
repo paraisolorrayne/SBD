@@ -5,33 +5,11 @@
  */
 package view;
 
-import connection.ConectaBd;
-import java.sql.*;
-import javax.swing.*;
-import model.bean.Agencia;
-import model.dao.AgenciaDAO;
-
 /**
  *
  * @author eder
  */
-public class AgenciaView extends JFrame {
-    // Variables declaration - do not modify                     
-    private JButton jButton2;
-    private JButton jButton3;
-    private JButton jButton4;
-    private JButton jButtonCadastrar;
-    private JLabel jLabel1;
-    private JLabel jLabel2;
-    private JLabel jLabel3;
-    private JLabel jLabel4;
-    private JLabel jLabel5;
-    private JLabel jLabel6;
-    private JPanel jPanel1;
-    private JTextField txtCidade;
-    private JTextField txtEstado;
-    private JTextField txtdId;
-    // End of variables declaration
+public class AgenciaView extends javax.swing.JFrame {
 
     /**
      * Creates new form AgenciaView
@@ -49,44 +27,101 @@ public class AgenciaView extends JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lbTitlePage = new javax.swing.JLabel();
+        lbCidade = new javax.swing.JLabel();
+        lbEstado = new javax.swing.JLabel();
+        btnCadastrar = new javax.swing.JButton();
+        btnCancel = new javax.swing.JButton();
+        txtFCidade = new javax.swing.JTextField();
+        txtFEstado = new javax.swing.JTextField();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        lbTitlePage.setFont(new java.awt.Font("Dialog", 3, 24)); // NOI18N
+        lbTitlePage.setLabelFor(this);
+        lbTitlePage.setText("Cadastro de Agência");
+        lbTitlePage.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.BELOW_TOP, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(51, 0, 255))); // NOI18N
+
+        lbCidade.setText("Cidade");
+
+        lbEstado.setText("Estado");
+
+        btnCadastrar.setText("Cadastrar");
+
+        btnCancel.setText("Cancelar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbEstado)
+                    .addComponent(lbCidade))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(btnCadastrar)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnCancel))
+                        .addComponent(lbTitlePage))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(txtFEstado, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
+                        .addComponent(txtFCidade, javax.swing.GroupLayout.Alignment.LEADING)))
+                .addGap(88, 88, 88))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbTitlePage)
+                .addGap(71, 71, 71)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbCidade)
+                    .addComponent(txtFCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbEstado)
+                    .addComponent(txtFEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCadastrar)
+                    .addComponent(btnCancel))
+                .addGap(72, 72, 72))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {                                                 
-
-        Agencia ag = new Agencia();
-        AgenciaDAO agDAO = new AgenciaDAO();
-
-        ag.setId(Integer.parseInt(txtdId.getText()));
-        ag.setCidade(txtCidade.getText());
-        ag.setEstado(txtEstado.getText());
-
-        try {
-            agDAO.create(ag);
-        } catch (SQLException | ClassNotFoundException ex) {
-            
-        }
-    }                                                
-
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) throws SQLException, ClassNotFoundException {
-        
-        Connection con = ConectaBd.getConnection();
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(AgenciaView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(AgenciaView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(AgenciaView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(AgenciaView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -96,5 +131,12 @@ public class AgenciaView extends JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCadastrar;
+    private javax.swing.JButton btnCancel;
+    private javax.swing.JLabel lbCidade;
+    private javax.swing.JLabel lbEstado;
+    private javax.swing.JLabel lbTitlePage;
+    private javax.swing.JTextField txtFCidade;
+    private javax.swing.JTextField txtFEstado;
     // End of variables declaration//GEN-END:variables
 }
