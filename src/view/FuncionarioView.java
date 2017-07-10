@@ -5,6 +5,10 @@
  */
 package view;
 
+import java.sql.*;
+import model.bean.Funcionario;
+import model.dao.FuncionarioDAO;
+
 /**
  *
  * @author eder
@@ -133,6 +137,24 @@ public class FuncionarioView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {
+        Funcionario fun = new Funcionario();
+        FuncionarioDAO funDAO = new FuncionarioDAO();
+        
+        fun.setNome(txtFieldNome.getText());
+        fun.setTelefone(txtFieldFone.getText());
+        fun.setDataAdmissao(Date.valueOf(txtFieldDateAdm.getText()));
+
+        try {
+            funDAO.create(fun);
+        } catch (SQLException | ClassNotFoundException ex) {
+            
+        }
+        
+    }
+    
+    
+    
     /**
      * @param args the command line arguments
      */
