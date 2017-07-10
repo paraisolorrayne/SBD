@@ -6,23 +6,32 @@
 package view;
 
 import connection.ConectaBd;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.*;
 import javax.swing.*;
 import model.bean.Cliente;
 import model.dao.ClienteDAO;
+import view.menuSystem;
 
 /**
  *
  * @author maxwe
  */
 public class ClienteView extends JFrame {
+    
 
     /**
      * Creates new form ClienteView
      */
     public ClienteView() {
         initComponents();
+        btnCancel.addActionListener((ActionEvent e) -> {
+            ClienteView cliente = new ClienteView();
+            cliente.dispose();
+        });
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -265,25 +274,25 @@ public class ClienteView extends JFrame {
 
         try {
             cDAO.create(c);
-        } catch (SQLException ex) {
-            //Logger.getLogger(ClientView.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
+        } catch (SQLException | ClassNotFoundException ex) {
             //Logger.getLogger(ClientView.class.getName()).log(Level.SEVERE, null, ex);
         }
+        //Logger.getLogger(ClientView.class.getName()).log(Level.SEVERE, null, ex);
+        
 
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     /**
      * @param args the command line arguments
+     * @throws java.sql.SQLException
+     * @throws java.lang.ClassNotFoundException
      */
     public static void main(String args[]) throws SQLException, ClassNotFoundException {
         
         Connection con = ConectaBd.getConnection();
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ClienteView().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new ClienteView().setVisible(true);
         });
     }
 

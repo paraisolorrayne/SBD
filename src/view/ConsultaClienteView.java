@@ -6,8 +6,6 @@
 package view;
 import connection.ConectaBd;
 import java.sql.*;
-import java.util.ArrayList;
-import javax.swing.*;
 import model.bean.Cliente;
 import model.dao.ClienteDAO;
 /**
@@ -96,15 +94,15 @@ public class ConsultaClienteView extends javax.swing.JFrame {
 
     /**
      * @param args the command line arguments
+     * @throws java.sql.SQLException
+     * @throws java.lang.ClassNotFoundException
      */
     public static void main(String args[]) throws SQLException, ClassNotFoundException {
         
         Connection con = ConectaBd.getConnection();
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ClienteView().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new ClienteView().setVisible(true);
         });
     }
 

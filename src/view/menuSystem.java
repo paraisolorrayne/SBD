@@ -12,7 +12,7 @@
 package view;
 
 import javax.swing.*;
-import java.awt.Color;
+import java.awt.event.*;
 
 
 public class menuSystem extends JFrame{
@@ -22,7 +22,8 @@ public class menuSystem extends JFrame{
     JButton btnCadastroCliente = new JButton("Cadastro Cliente");
     JButton btnCadastroAgencia = new JButton("Cadastro Agencia");
     JButton btnCadastroFuncionario = new JButton("Cadastro Funcionário");
-    JButton btnConsultas = new JButton("Consultas");
+    JButton btnConsultaCliente = new JButton("Consulta Cliente");
+    JButton btnConsultaClienteAgencia = new JButton("Consulta Cliente por Agencia");
     
     public menuSystem() {
         super();
@@ -33,7 +34,6 @@ public class menuSystem extends JFrame{
     
     private void initialize(){
         // JFrame properties
-        setBackground(Color.BLACK);
         this.setTitle("Sistema Bancário SBD");
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setSize(700,400);
@@ -41,25 +41,45 @@ public class menuSystem extends JFrame{
         btnCadastroCliente.setBounds(100, 400, 220, 50);
         btnCadastroAgencia.setBounds(100, 300, 220, 50);
         btnCadastroFuncionario.setBounds(200, 200, 220, 50);
-        btnConsultas.setBounds(100, 100, 220, 50);
+        btnConsultaCliente.setBounds(100, 100, 220, 50);
+        btnConsultaClienteAgencia.setBounds(100, 100, 220, 50);
         // JPanel bounds
         menu.setBounds(500, 500, 80, 100);
         // Adding to JFrame
         menu.add(btnCadastroCliente);
         menu.add(btnCadastroAgencia);
         menu.add(btnCadastroFuncionario);
-        menu.add(btnConsultas);
+        menu.add(btnConsultaCliente);
+        menu.add(btnConsultaClienteAgencia);
         add(menu);
+        //abre cadastro cliente
+        btnCadastroCliente.addActionListener((ActionEvent e) -> {
+            new ClienteView().setVisible(true);
+        });
+        //abre cadastro agencia
+        btnCadastroAgencia.addActionListener((ActionEvent e) -> {
+            new AgenciaView().setVisible(true);
+        });
+        //abre cadastro funcionario
+        btnCadastroFuncionario.addActionListener((ActionEvent e) -> {
+            new FuncionarioView().setVisible(true);
+        });
+        //abre consulta cliente
+        btnConsultaCliente.addActionListener((ActionEvent e) -> {
+            new ConsultaClienteView().setVisible(true);
+        });
+        //abre consulta cliente agencia
+        btnConsultaClienteAgencia.addActionListener((ActionEvent e) -> {
+            new ConsultaClienteAgencia().setVisible(true);
+        });
         
     }
-    
-    
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-                new menuSystem();
+        // TODO Auto-generated method stub
+        menuSystem menuSystem = new menuSystem();
 	}
 
     

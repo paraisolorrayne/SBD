@@ -6,10 +6,6 @@
 package view;
 import connection.ConectaBd;
 import java.sql.*;
-import java.util.*;
-import javax.swing.*;
-import model.bean.*;
-import model.dao.*;
 /**
  *
  * @author eder
@@ -97,15 +93,15 @@ public class ConsultaClienteAgencia extends javax.swing.JFrame {
 
     /**
      * @param args the command line arguments
+     * @throws java.sql.SQLException
+     * @throws java.lang.ClassNotFoundException
      */
     public static void main(String args[]) throws SQLException, ClassNotFoundException {
         
         Connection con = ConectaBd.getConnection();
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ClienteView().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new ClienteView().setVisible(true);
         });
     }
 
