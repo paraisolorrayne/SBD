@@ -6,20 +6,20 @@
 package view;
 import connection.ConectaBd;
 import java.sql.*;
-import java.util.ArrayList;
+import java.util.*;
 import javax.swing.*;
-import model.bean.Cliente;
-import model.dao.ClienteDAO;
+import model.bean.*;
+import model.dao.*;
 /**
  *
  * @author eder
  */
-public class ConsultaClienteView extends javax.swing.JFrame {
-    private String nome;
+public class ConsultaClienteAgencia extends javax.swing.JFrame {
+
     /**
-     * Creates new form ConsultaClienteView
+     * Creates new form ConsultaClienteAgencia
      */
-    public ConsultaClienteView() {
+    public ConsultaClienteAgencia() {
         initComponents();
     }
 
@@ -32,76 +32,69 @@ public class ConsultaClienteView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lbTitlePage = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        lbNome = new javax.swing.JLabel();
-        txtFieldNome = new javax.swing.JTextField();
-        btnBuscar = new javax.swing.JButton();
+        lbAg = new javax.swing.JLabel();
+        btBuscar = new javax.swing.JButton();
+        txtFieldAg = new javax.swing.JTextField();
+        txtFieldCliente = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel1.setText("Consulta Cliente");
+        lbTitlePage.setFont(new java.awt.Font("Dialog", 3, 24)); // NOI18N
+        lbTitlePage.setText("Consulta Cliente Por Agência");
 
-        lbNome.setText("Nome");
+        jLabel1.setText("Nome do cliente");
 
-        btnBuscar.setText("Buscar");
+        lbAg.setText("Estado da Agência:");
+
+        btBuscar.setText("Buscar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lbNome)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(66, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(29, 29, 29)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(87, 87, 87))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(btnBuscar)
-                                .addGap(147, 147, 147))))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lbAg)
+                                    .addComponent(jLabel1))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtFieldAg)
+                                    .addComponent(txtFieldCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)))
+                            .addComponent(lbTitlePage)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(195, 195, 195)
+                        .addComponent(btBuscar)))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbNome)
-                    .addComponent(txtFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(lbTitlePage)
                 .addGap(44, 44, 44)
-                .addComponent(btnBuscar)
-                .addContainerGap(136, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(txtFieldCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbAg)
+                    .addComponent(txtFieldAg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addComponent(btBuscar)
+                .addGap(110, 110, 110))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {                                             
-
-        Cliente c = new Cliente();
-        ClienteDAO cDAO = new ClienteDAO();
-
-        c.setNome(txtFieldNome.getText());
-        nome = txtFieldNome.getText();
-
-        try {
-            cDAO.create(c);
-        } catch (SQLException ex) {
-            //Logger.getLogger(ClientView.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            //Logger.getLogger(ClientView.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }
+    
     
     public ArrayList<Cliente> read() throws SQLException, ClassNotFoundException// Método para ler os dados dos clientes do banco
     {
@@ -145,10 +138,13 @@ public class ConsultaClienteView extends javax.swing.JFrame {
         });
     }
 
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btBuscar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel lbNome;
-    private javax.swing.JTextField txtFieldNome;
+    private javax.swing.JLabel lbAg;
+    private javax.swing.JLabel lbTitlePage;
+    private javax.swing.JTextField txtFieldAg;
+    private javax.swing.JTextField txtFieldCliente;
     // End of variables declaration//GEN-END:variables
 }
