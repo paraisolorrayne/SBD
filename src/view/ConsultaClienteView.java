@@ -85,21 +85,14 @@ public class ConsultaClienteView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {                                             
+    private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) throws SQLException, ClassNotFoundException {                                             
 
         Cliente c = new Cliente();
         ClienteDAO cDAO = new ClienteDAO();
-
-        c.setNome(txtFieldNome.getText());
         nome = txtFieldNome.getText();
-
-        try {
-            cDAO.create(c);
-        } catch (SQLException ex) {
-            //Logger.getLogger(ClientView.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            //Logger.getLogger(ClientView.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
+        cDAO.read(c);
+        cDAO.readNome(nome);
 
     }
     

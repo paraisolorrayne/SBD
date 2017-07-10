@@ -41,4 +41,45 @@ public class FuncionarioDAO {
         }
     }
     
+    public void read(Funcionario funcionario) throws SQLException, ClassNotFoundException
+    {
+        Connection con = ConectaBd.getConnection();
+        PreparedStatement pst = null;
+        
+        try{
+            pst = con.prepareStatement("SELECT * FROM funcionario(numF, nome, telefone, DataAdmissao, NomeDependentes, TempoDeServico) VALUES(?,?,?,?,?,?)");
+            
+            pst.setInt(1, funcionario.getNumF());
+            pst.setString(2, funcionario.getNome());
+            pst.setString(3, funcionario.getTelefone());
+            pst.setDate(4, funcionario.getDataAdmissao());
+            pst.setArray(5, funcionario.getNomeDependentes());
+            pst.setString(6, funcionario.getTempoDeServico());
+            
+            pst.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null, "Funcionario inserido com sucesso!");
+        }
+        catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "Falha na inserção do funcionario: "+ ex);
+        }finally{
+            ConectaBd.closeConnection(con, pst);     
+        }
+    }
+    
+    public void readNome (String nome) throws SQLException, ClassNotFoundException {
+        Funcionario c = new Funcionario();
+        Connection con = ConectaBd.getConnection();
+        PreparedStatement pst = null;
+        try{
+            pst = con.prepareStatement("SELECT nome FROM cliente(nome) VALUES(?)");
+            nome = c.getNome();
+            pst.setString(3, nome);
+        } catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "Falha na busca do funcionario: "+ ex);
+        }finally{
+            ConectaBd.closeConnection(con, pst);     
+        }
+    }
+    
 }

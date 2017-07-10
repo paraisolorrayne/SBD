@@ -34,4 +34,25 @@ public class CupomDAO {
             ConectaBd.closeConnection(con, pst);     
         }
     }
+    
+    public void read(Cupom cupom) throws SQLException, ClassNotFoundException
+    {
+        Connection con = ConectaBd.getConnection();
+        PreparedStatement pst = null;
+        
+        try{
+            pst = con.prepareStatement("SELECT * FROM cumpo(num,validade) VALUES(?,?)");
+            
+            pst.setInt(1, cupom.getNum());
+            pst.setString(2,cupom.getValidade());           
+            pst.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null, "Cumpo inserido com sucesso!");
+        }
+        catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "Falha na inserção do cupom: "+ ex);
+        }finally{
+            ConectaBd.closeConnection(con, pst);     
+        }
+    }
 }

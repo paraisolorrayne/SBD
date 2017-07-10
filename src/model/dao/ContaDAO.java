@@ -40,4 +40,28 @@ public class ContaDAO {
         }
     }
     
+    public void read(Conta conta) throws SQLException, ClassNotFoundException
+    {
+        Connection con = ConectaBd.getConnection();
+        PreparedStatement pst = null;
+        
+        try{
+            pst = con.prepareStatement("SELECT * FROM conta(id,Saldo,Data_Criacao, Data_UltimoAcesso) VALUES(?,?,?,?)");
+            
+            pst.setInt(1, conta.getId());
+            pst.setDouble(2, conta.getSaldo());
+            pst.setDate(3, conta.getDataCriacao());
+            pst.setDate(4,conta.getDataUltimoAcesso());
+            
+            pst.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null, "Conta inserida com sucesso!");
+        }
+        catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "Falha na inserção da conta: "+ ex);
+        }finally{
+            ConectaBd.closeConnection(con, pst);     
+        }
+    }
+    
 }

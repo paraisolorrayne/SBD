@@ -37,5 +37,27 @@ public class EmprestimoDAO {
         }
     }
     
+    public void read(Emprestimo emprestimo) throws SQLException, ClassNotFoundException
+    {
+        Connection con = ConectaBd.getConnection();
+        PreparedStatement pst = null;
+        
+        try{
+            pst = con.prepareStatement("SELECT * FROM emprestimo(idEmprestimo,QtdParcelas,valor) VALUES(?,?,?)");
+            
+            pst.setInt(1, emprestimo.getId());
+            pst.setInt(2,emprestimo.getParcelas());
+            pst.setDouble(3, emprestimo.getValor());
+            pst.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null, "Emprestimo inserido com sucesso!");
+        }
+        catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "Falha na inserção do emprestimo: "+ ex);
+        }finally{
+            ConectaBd.closeConnection(con, pst);     
+        }
+    }
+    
     
 }
