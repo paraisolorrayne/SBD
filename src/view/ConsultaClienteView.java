@@ -90,38 +90,8 @@ public class ConsultaClienteView extends javax.swing.JFrame {
         Cliente c = new Cliente();
         ClienteDAO cDAO = new ClienteDAO();
         nome = txtFieldNome.getText();
-        
-        cDAO.read(c);
         cDAO.readNome(nome);
 
-    }
-    
-    public ArrayList<Cliente> read() throws SQLException, ClassNotFoundException// Método para ler os dados dos clientes do banco
-    {
-        Connection con = ConectaBd.getConnection();
-        PreparedStatement pst = null;
-        ResultSet rs = null;
-        ArrayList<Cliente> listClientes = new ArrayList<Cliente>();
-        
-        try{
-            pst = con.prepareStatement("SELECT * FROM cliente WHERE cliente.nome = nome");
-            //pst = con.prepareStatement("SELECT * FROM cliente WHERE cliente.nome = " + txtFieldCliente.getText());
-            rs = pst.executeQuery(); // Realiza a consulta no banco
-            
-            while(rs.next()){
-                Cliente cliente = new Cliente();
-                cliente.setNome(rs.getString("nome"));
-                //cliente.setNome(rs.getString(txtFieldCliente.getText()));
-                listClientes.add(cliente);
-            }
-            
-        }catch(SQLException ex){
-            
-        }finally{
-            ConectaBd.closeConnection(con, pst, rs);
-        }
-        System.out.println(listClientes);
-        return listClientes;
     }
 
     /**
