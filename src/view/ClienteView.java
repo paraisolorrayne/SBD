@@ -27,6 +27,29 @@ public class ClienteView extends JFrame {
         btnCancel.addActionListener((ActionEvent e) -> {
             this.setVisible(false);
         });
+        
+        btnCadastrar.addActionListener((ActionEvent e) -> {
+            Cliente c = new Cliente();
+        ClienteDAO cDAO = new ClienteDAO();
+
+        c.setId(Integer.parseInt(txtdId.getText()));
+        c.setCPF(Double.parseDouble(txtCpf.getText()));
+        c.setNome(txtNome.getText());
+        
+        
+        c.setDataNasc(Date.valueOf(txtDataNasc.getText()));
+        c.setCidade(txtCidade.getText());
+        c.setEstado(txtEstado.getText());
+        c.setEndereco(txtEndereco.getText());
+        c.setGernumf(txtGerador.getText());
+
+        try {
+            cDAO.create(c);
+        } catch (SQLException | ClassNotFoundException ex) {
+            //Logger.getLogger(ClientView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        });
+        
     }
     
 
@@ -255,25 +278,7 @@ public class ClienteView extends JFrame {
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
 
-        Cliente c = new Cliente();
-        ClienteDAO cDAO = new ClienteDAO();
-
-        c.setId(Integer.parseInt(txtdId.getText()));
-        c.setCPF(Double.parseDouble(txtCpf.getText()));
-        c.setNome(txtNome.getText());
         
-        
-        c.setDataNasc(Date.valueOf(txtDataNasc.getText()));
-        c.setCidade(txtCidade.getText());
-        c.setEstado(txtEstado.getText());
-        c.setEndereco(txtEndereco.getText());
-        c.setGernumf(txtGerador.getText());
-
-        try {
-            cDAO.create(c);
-        } catch (SQLException | ClassNotFoundException ex) {
-            //Logger.getLogger(ClientView.class.getName()).log(Level.SEVERE, null, ex);
-        }
         //Logger.getLogger(ClientView.class.getName()).log(Level.SEVERE, null, ex);
         
 
