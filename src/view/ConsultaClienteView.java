@@ -4,8 +4,10 @@
  * and open the template in the editor.
  */
 package view;
-import connection.ConectaBd;
+import java.awt.event.ActionEvent;
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.bean.Cliente;
 import model.dao.ClienteDAO;
 /**
@@ -19,6 +21,17 @@ public class ConsultaClienteView extends javax.swing.JFrame {
      */
     public ConsultaClienteView() {
         initComponents();
+        btnBuscar.addActionListener((ActionEvent e) -> {
+            Cliente c = new Cliente();
+            ClienteDAO cDAO = new ClienteDAO();
+            nome = txtFieldNome.getText();
+            System.out.println(nome);
+            try {
+                cDAO.readNome(nome);
+            } catch (SQLException | ClassNotFoundException ex) {
+                Logger.getLogger(ConsultaClienteView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
     }
 
     /**
@@ -83,14 +96,6 @@ public class ConsultaClienteView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) throws SQLException, ClassNotFoundException {                                             
-
-        Cliente c = new Cliente();
-        ClienteDAO cDAO = new ClienteDAO();
-        nome = txtFieldNome.getText();
-        cDAO.readNome(nome);
-
-    }
 
    
 

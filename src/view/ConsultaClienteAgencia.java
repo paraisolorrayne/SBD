@@ -5,6 +5,7 @@
  */
 package view;
 import connection.ConectaBd;
+import java.awt.event.ActionEvent;
 import java.sql.*;
 /**
  *
@@ -17,6 +18,9 @@ public class ConsultaClienteAgencia extends javax.swing.JFrame {
      */
     public ConsultaClienteAgencia() {
         initComponents();
+        btBuscar.addActionListener((ActionEvent e) -> {
+            
+        });
     }
 
     /**

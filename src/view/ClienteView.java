@@ -7,12 +7,10 @@ package view;
 
 import connection.ConectaBd;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.sql.*;
 import javax.swing.*;
 import model.bean.Cliente;
 import model.dao.ClienteDAO;
-import view.menuSystem;
 
 /**
  *
