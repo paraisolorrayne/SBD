@@ -13,6 +13,8 @@ package view;
 
 import javax.swing.*;
 import java.awt.event.*;
+import java.sql.*;
+import connection.ConectaBd;
 
 
 public class menuSystem extends JFrame{
@@ -75,10 +77,13 @@ public class menuSystem extends JFrame{
         
     }
 	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-        // TODO Auto-generated method stub
+     * @param args the command line arguments
+     * @throws java.sql.SQLException
+     * @throws java.lang.ClassNotFoundException
+     */
+    public static void main(String args[]) throws SQLException, ClassNotFoundException {
+        
+        Connection con = ConectaBd.getConnection();
         menuSystem menuSystem = new menuSystem();
 	}
 

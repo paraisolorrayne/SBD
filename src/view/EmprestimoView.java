@@ -5,8 +5,8 @@
  */
 package view;
 import connection.ConectaBd;
+import java.awt.event.ActionEvent;
 import java.sql.*;
-import javax.swing.*;
 import model.bean.Emprestimo;
 import model.dao.EmprestimoDAO;
 /**
@@ -20,6 +20,9 @@ public class EmprestimoView extends javax.swing.JFrame {
      */
     public EmprestimoView() {
         initComponents();
+        btnCancel.addActionListener((ActionEvent e) -> {
+            this.setVisible(false);
+        });
     }
 
     /**
@@ -116,19 +119,7 @@ public class EmprestimoView extends javax.swing.JFrame {
         }
     }                                            
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) throws SQLException, ClassNotFoundException {
-        
-        Connection con = ConectaBd.getConnection();
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new EmprestimoView().setVisible(true);
-            }
-        });
-    }
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;

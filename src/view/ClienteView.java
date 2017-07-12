@@ -27,8 +27,7 @@ public class ClienteView extends JFrame {
     public ClienteView() {
         initComponents();
         btnCancel.addActionListener((ActionEvent e) -> {
-            ClienteView cliente = new ClienteView();
-            cliente.dispose();
+            this.setVisible(false);
         });
     }
     
@@ -282,19 +281,6 @@ public class ClienteView extends JFrame {
 
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     * @throws java.sql.SQLException
-     * @throws java.lang.ClassNotFoundException
-     */
-    public static void main(String args[]) throws SQLException, ClassNotFoundException {
-        
-        Connection con = ConectaBd.getConnection();
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> {
-            new ClienteView().setVisible(true);
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LbEstado;

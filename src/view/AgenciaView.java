@@ -6,6 +6,7 @@
 package view;
 
 import connection.ConectaBd;
+import java.awt.event.ActionEvent;
 import java.sql.*;
 import model.bean.Agencia;
 import model.dao.AgenciaDAO;
@@ -21,6 +22,9 @@ public class AgenciaView extends javax.swing.JFrame {
      */
     public AgenciaView() {
         initComponents();
+        btnCancel.addActionListener((ActionEvent e) -> {
+            this.setVisible(false);
+        });
     }
 
     /**
@@ -116,19 +120,6 @@ public class AgenciaView extends javax.swing.JFrame {
         }
     }
     
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) throws SQLException, ClassNotFoundException {
-        
-        Connection con = ConectaBd.getConnection();
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AgenciaView().setVisible(true);
-            }
-        });
-    }
 
         
         
