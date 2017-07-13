@@ -3,7 +3,7 @@
 -- GRUPO 06
 	-- Felipe H Gomes
 	-- José Maxwell 
-	-- Lorrayne Paraíso Flor
+	-- Lorrayne Paraiso Flor
 
 -- SCRIPT SQL  AGENCIA BANCARIA.
 -- CRIAÇÃO TABELAS 

@@ -28,6 +28,8 @@ public class ConsultaClienteView extends javax.swing.JFrame {
             System.out.println(nome);
             try {
                 cDAO.readNome(nome);
+                
+                
             } catch (SQLException | ClassNotFoundException ex) {
                 Logger.getLogger(ConsultaClienteView.class.getName()).log(Level.SEVERE, null, ex);
             }

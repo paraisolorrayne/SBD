@@ -18,6 +18,7 @@ public class ClienteDAO {
         Connection con = ConectaBd.getConnection();
         PreparedStatement pst = null;
         
+        
         try{
             pst = con.prepareStatement("INSERT INTO cliente(id,cpf,nome,datanasc,cidade,estado,endereco,gernumf) VALUES(?,?,?,?,?,?,?,?)");
             
@@ -68,19 +69,26 @@ public class ClienteDAO {
             ConectaBd.closeConnection(con, pst);     
         }
     }
-    public void readNome (String nome) throws SQLException, ClassNotFoundException {
+    public boolean readNome (String nome) throws SQLException, ClassNotFoundException {
         Cliente c = new Cliente();
         Connection con = ConectaBd.getConnection();
         PreparedStatement pst = null;
         try{
             pst = con.prepareStatement("SELECT nome FROM cliente(nome) VALUES(?)");
             nome = c.getNome();
-            pst.setString(3, nome);
+            pst.setString(1,nome);
+            
+            return true;
+           
         } catch(SQLException ex){
             JOptionPane.showMessageDialog(null, "Falha na busca do cliente: "+ ex);
         }finally{
             ConectaBd.closeConnection(con, pst);     
         }
+        if (true) {
+                System.out.println("Deu certo");
+        }
+        return false;
         
     }
     

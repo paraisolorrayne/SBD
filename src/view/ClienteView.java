@@ -7,6 +7,7 @@ package view;
 
 import connection.ConectaBd;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.*;
 import javax.swing.*;
 import model.bean.Cliente;
@@ -18,7 +19,7 @@ import model.dao.ClienteDAO;
  */
 public class ClienteView extends JFrame {
     
-
+    private int id = 123654;
     /**
      * Creates new form ClienteView
      */
@@ -28,26 +29,29 @@ public class ClienteView extends JFrame {
             this.setVisible(false);
         });
         
-        btnCadastrar.addActionListener((ActionEvent e) -> {
-            Cliente c = new Cliente();
-        ClienteDAO cDAO = new ClienteDAO();
-
-        c.setId(Integer.parseInt(txtdId.getText()));
-        c.setCPF(Double.parseDouble(txtCpf.getText()));
-        c.setNome(txtNome.getText());
-        
-        
-        c.setDataNasc(Date.valueOf(txtDataNasc.getText()));
-        c.setCidade(txtCidade.getText());
-        c.setEstado(txtEstado.getText());
-        c.setEndereco(txtEndereco.getText());
-        c.setGernumf(txtGerador.getText());
-
-        try {
-            cDAO.create(c);
-        } catch (SQLException | ClassNotFoundException ex) {
-            //Logger.getLogger(ClientView.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        btnCadastrar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Cliente c = new Cliente();
+                ClienteDAO cDAO = new ClienteDAO();
+                
+                
+                c.setId(123);
+                c.setCPF(Double.parseDouble(txtCpf.getText()));
+                c.setNome(txtNome.getText());
+                c.setGernumf("532");
+                
+                c.setDataNasc(Date.valueOf(txtDataNasc.getText()));
+                c.setCidade(txtCidade.getText());
+                c.setEstado(txtEstado.getText());
+                c.setEndereco(txtEndereco.getText());
+                
+                
+                try {
+                    cDAO.create(c);
+                } catch (SQLException | ClassNotFoundException ex) {
+                    //Logger.getLogger(ClientView.class.getName()).log(Level.SEVERE, null, ex);
+                }   }
         });
         
     }
@@ -63,8 +67,6 @@ public class ClienteView extends JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        lbId = new javax.swing.JLabel();
-        txtdId = new javax.swing.JTextField();
         lbCPF = new javax.swing.JLabel();
         txtCpf = new javax.swing.JTextField();
         lbNome = new javax.swing.JLabel();
@@ -75,10 +77,8 @@ public class ClienteView extends JFrame {
         txtCidade = new javax.swing.JTextField();
         LbEstado = new javax.swing.JLabel();
         lbEndereco = new javax.swing.JLabel();
-        lbGerador = new javax.swing.JLabel();
         txtEstado = new javax.swing.JTextField();
         txtEndereco = new javax.swing.JTextField();
-        txtGerador = new javax.swing.JTextField();
         btnCadastrar = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
         lbTitlePage = new javax.swing.JLabel();
@@ -87,14 +87,6 @@ public class ClienteView extends JFrame {
         ckbCorrente = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        lbId.setText("iD:");
-
-        txtdId.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtdIdActionPerformed(evt);
-            }
-        });
 
         lbCPF.setText("CPF:");
 
@@ -114,14 +106,6 @@ public class ClienteView extends JFrame {
 
         lbEndereco.setText("Endereço: ");
 
-        lbGerador.setText("Gerador: ");
-
-        txtGerador.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtGeradorActionPerformed(evt);
-            }
-        });
-
         btnCadastrar.setText("Cadastrar");
         btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,7 +118,7 @@ public class ClienteView extends JFrame {
         lbTitlePage.setFont(new java.awt.Font("Dialog", 3, 24)); // NOI18N
         lbTitlePage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbTitlePage.setText("Cadastro de Cliente");
-        lbTitlePage.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.BELOW_TOP, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(51, 0, 255))); // NOI18N
+        lbTitlePage.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.BELOW_TOP, new java.awt.Font("Lucida Grande", 0, 13), new java.awt.Color(51, 0, 255))); // NOI18N
 
         lbTipoConta.setText("Tipo de Conta:");
 
@@ -149,42 +133,30 @@ public class ClienteView extends JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(257, 257, 257)
-                        .addComponent(lbTitlePage))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(321, 321, 321)
-                        .addComponent(ckbCorrente)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lbNome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lbCPF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lbId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtdId, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
-                            .addComponent(txtCpf)
-                            .addComponent(txtNome, javax.swing.GroupLayout.Alignment.TRAILING)))
-                    .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lbTipoConta, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbDtNasc))
+                        .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lbCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtDataNasc))
+                                .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(21, 21, 21)
-                                .addComponent(ckbPoupanca)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 179, Short.MAX_VALUE)
+                                .addComponent(lbNome)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(ckbPoupanca)
+                                    .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(ckbCorrente))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lbDtNasc)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtDataNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 134, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(lbGerador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lbEndereco, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
                             .addComponent(LbEstado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lbCidade, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -192,12 +164,20 @@ public class ClienteView extends JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(txtCidade, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
                             .addComponent(txtEstado, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtGerador, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtEndereco, javax.swing.GroupLayout.Alignment.LEADING)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(64, 64, 64)
                         .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(24, 24, 24))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(257, 257, 257)
+                        .addComponent(lbTitlePage))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lbTipoConta, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -206,10 +186,10 @@ public class ClienteView extends JFrame {
                 .addComponent(lbTitlePage)
                 .addGap(76, 76, 76)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbId, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtdId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbCidade)
-                    .addComponent(txtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbNome)
+                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbCPF)
@@ -218,22 +198,17 @@ public class ClienteView extends JFrame {
                     .addComponent(txtEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbNome)
-                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbEndereco)
-                    .addComponent(txtEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbDtNasc)
-                    .addComponent(txtDataNasc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbGerador)
-                    .addComponent(txtGerador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                    .addComponent(txtDataNasc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(37, 37, 37)
+                .addComponent(lbTipoConta)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbTipoConta)
                     .addComponent(ckbPoupanca)
                     .addComponent(ckbCorrente))
-                .addGap(38, 38, 38)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancel)
                     .addComponent(btnCadastrar))
@@ -247,9 +222,9 @@ public class ClienteView extends JFrame {
             .addGap(0, 787, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGap(0, 6, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 6, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -264,17 +239,9 @@ public class ClienteView extends JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtdIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtdIdActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtdIdActionPerformed
-
     private void txtCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCpfActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCpfActionPerformed
-
-    private void txtGeradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGeradorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtGeradorActionPerformed
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
 
@@ -296,8 +263,6 @@ public class ClienteView extends JFrame {
     private javax.swing.JLabel lbCidade;
     private javax.swing.JLabel lbDtNasc;
     private javax.swing.JLabel lbEndereco;
-    private javax.swing.JLabel lbGerador;
-    private javax.swing.JLabel lbId;
     private javax.swing.JLabel lbNome;
     private javax.swing.JLabel lbTipoConta;
     private javax.swing.JLabel lbTitlePage;
@@ -306,8 +271,6 @@ public class ClienteView extends JFrame {
     private javax.swing.JTextField txtDataNasc;
     private javax.swing.JTextField txtEndereco;
     private javax.swing.JTextField txtEstado;
-    private javax.swing.JTextField txtGerador;
     private javax.swing.JTextField txtNome;
-    private javax.swing.JTextField txtdId;
     // End of variables declaration//GEN-END:variables
 }
